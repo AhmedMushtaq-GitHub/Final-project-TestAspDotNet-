@@ -13,7 +13,7 @@ namespace TestAspDotNet.Model
         public string AccessToken { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
-        public UserRole UserRole { get; set; }  
+        public UserRole? UserRole { get; set; }  
         public virtual int UserRoleId { get; set; }  
     }
 }
