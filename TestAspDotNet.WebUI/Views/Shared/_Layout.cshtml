@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@using TestAspDotNet.Model;
+@using TestAspDotNet.Data;
+@inject TestAspDotNetDbContext db;
+@{
+    string accessToken = Context.Request.Cookies["user-access-token"];
+    User user = new User();
+    if (!string.IsNullOrEmpty(accessToken))
+    {
+        user = db.Users.Where(x => x.AccessToken.Equals(accessToken)).FirstOrDefault();
+    }
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
