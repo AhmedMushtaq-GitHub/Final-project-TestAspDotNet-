@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using TestAspDotNet.Data;
+using TestAspDotNet.Model;
 using TestAspDotNet.Repository;
 namespace TestAspDotNet.WebUI.Controllers
 {
@@ -35,6 +36,21 @@ namespace TestAspDotNet.WebUI.Controllers
             }
             ViewBag.Error = "Your UserName Or Password is Incorrect";
             return View();
+        }
+        public IActionResult Register()
+        {
+            return View();        
+        }
+        public IActionResult Register(User user)
+        {
+            user.UserRoleId = 3;
+           
+            return View();
+        }
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("user-access-token");
+            return Redirect("/Home/Index");
         }
 
     }

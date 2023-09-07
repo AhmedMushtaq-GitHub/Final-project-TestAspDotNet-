@@ -1,5 +1,48 @@
-﻿@*
+﻿@model TestAspDotNet.Model.User;
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="input-group">
+                    <lable asp-for="Name" class="form-label">Name</lable>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="input-group">
+                    <lable asp-for="EmailAddress" class="form-label">EmailAddress</lable>
+                    <input asp-for="EmailAddress" type="email" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="input-group my-5">
+                    <lable asp-for="Password" class="form-label">Password</lable>
+                    <input asp-for="Password" type="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+              
+                @if (string.IsNullOrEmpty(ViewBag.Error))
+                {
+                    <h4 class="text-danger">@ViewBag.Error</h4>
+                }
+                <div class="input-group my-5">
+                    <button type="submit" value="Login" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
