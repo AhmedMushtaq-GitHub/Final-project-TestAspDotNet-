@@ -11,8 +11,10 @@ namespace TestAspDotNet.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public string AccessToken { get; set; }
+        public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
+        public bool IsConfirm { get; set; }
         public UserRole? UserRole { get; set; }  
         public virtual int UserRoleId { get; set; }  
     }

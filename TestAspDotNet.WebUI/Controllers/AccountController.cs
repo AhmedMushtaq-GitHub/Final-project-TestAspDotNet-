@@ -37,19 +37,20 @@ namespace TestAspDotNet.WebUI.Controllers
             ViewBag.Error = "Your UserName Or Password is Incorrect";
             return View();
         }
+        [HttpGet]
         public IActionResult Register()
         {
             return View();        
         }
+        [HttpPost]
         public IActionResult Register(User user)
         {
-            user.UserRoleId = 3;
-           
+      
             return View();
         }
         public IActionResult Logout()
         {
-            Response.Cookies.Delete("user-access-token");
+            Response.Cookies.Delete("User-access-token");
             return Redirect("/Home/Index");
         }
 

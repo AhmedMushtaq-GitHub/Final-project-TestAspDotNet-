@@ -10,31 +10,34 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form asp-action="Register">
+            <form asp-action="Register" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="input-group">
-                    <lable asp-for="Name" class="form-label">Name</lable>
-                    <input asp-for="Name" type="text" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="input-group">
-                    <lable asp-for="EmailAddress" class="form-label">EmailAddress</lable>
-                    <input asp-for="EmailAddress" type="email" class="form-control" />
-                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                </div>
-                <div class="input-group my-5">
-                    <lable asp-for="Password" class="form-label">Password</lable>
-                    <input asp-for="Password" type="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-              
+
+                <lable asp-for="Name">Name</lable>
+                <input asp-for="Name" class="form-control" placeholder="Enter Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+
+                <lable asp-for="EmailAddress">Email</lable>
+                <input asp-for="EmailAddress" class="form-control" placeholder="Enter Email" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+
+
+
+                <lable asp-for="Password">Password</lable>
+                <input asp-for="Password" class="form-control" placeholder="Enter Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <lable asp-for="PhoneNumber">PhoneNumber</lable>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="Enter PhoneNumber" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
                 @if (string.IsNullOrEmpty(ViewBag.Error))
                 {
                     <h4 class="text-danger">@ViewBag.Error</h4>
                 }
-                <div class="input-group my-5">
-                    <button type="submit" value="Login" class="btn btn-primary">Login</button>
-                </div>
+
+                <button type="submit" value="Login" class="btn btn-primary">Login</button>
+
             </form>
         </div>
         <div class="col-md-4"></div>
