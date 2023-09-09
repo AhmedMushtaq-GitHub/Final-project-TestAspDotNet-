@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using TestAspDotNet.Data;
 using TestAspDotNet.Model;
@@ -45,6 +46,20 @@ namespace TestAspDotNet.WebUI.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
+            string confirmationToken = _account.Registry(user);
+            if (string.IsNullOrEmpty(confirmationToken)) 
+            {
+                ViewBag.Error = "Error Occured";
+                return View();
+            }
+            else
+            {
+                CookieOptions options = new CookieOptions();
+                options.Expires = DateTime.UtcNow.AddDays(30);
+                Response.Cookies.Append("User-access-token", user.AccessToken, options);
+                return Redirect("/Home/Index");
+
+            }
       
             return View();
         }

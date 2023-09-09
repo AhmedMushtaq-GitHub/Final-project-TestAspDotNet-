@@ -20,6 +20,16 @@ namespace TestAspDotNet.Repository.Implementation
             return _db.Users.Where(x => x.EmailAddress.ToLower().Equals(email.ToLower()) && x.Password.Equals(password)).FirstOrDefault();
         }
 
-        
+        public string Registry(User user)
+        {
+            user.UserRoleId = 3;
+            user.IsConfirm = false;
+            user.JoinedOn = DateTime.UtcNow.AddHours(5);
+            user.AccessToken = Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks;
+
+            _db.SaveChanges();
+            _db.Users.Add(user);
+            return user.AccessToken + user.JoinedOn.Ticks.ToString();
+        }
     }
 }

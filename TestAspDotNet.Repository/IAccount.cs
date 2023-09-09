@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -10,8 +11,9 @@ namespace TestAspDotNet.Repository
 {
     public interface IAccount
     {
-     /*   string Register(User user);
-        string GetUserInfo();*/
+  
         public User GetUserForLogin(string email, string password);
+        string Registry(User user);
+        
     }
 }
