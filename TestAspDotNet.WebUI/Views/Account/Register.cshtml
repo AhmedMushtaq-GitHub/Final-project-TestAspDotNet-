@@ -32,11 +32,6 @@
                 <input asp-for="PhoneNumber" class="form-control" placeholder="Enter PhoneNumber" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
 
-                @if (string.IsNullOrEmpty(ViewBag.Error))
-                {
-                    <h4 class="text-danger">@ViewBag.Error</h4>
-                }
-
                 <button type="submit" value="Login" class="btn btn-primary">Login</button>
 
             </form>
