@@ -1,8 +1,9 @@
 ﻿@using TestAspDotNet.Model;
 @using TestAspDotNet.Data;
+
 @inject TestAspDotNetDbContext db;
 @{
-    string accessToken = Context.Request.Cookies["user-access-token"];
+    string accessToken = Context.Request.Cookies["User-access-token"];
     User user = new User();
     if (!string.IsNullOrEmpty(accessToken))
     {
@@ -13,7 +14,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Ahmed.WebUI</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
@@ -37,7 +38,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
-                        @if (user.UserRoleId == 0)
+                        @if (user?.UserRoleId == 0)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
@@ -50,8 +51,10 @@
                        {
                         <li class="nav-item ">
                                 <a class="nav-link text-danger" asp-area="" asp-controller="Account" asp-action="Logout"><span class="text-primary"> Hello' @user.Name</span> Logout</a>
+                              
                         </li>
                        }
+     
                     </ul>
                 </div>
             </div>

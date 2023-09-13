@@ -25,8 +25,8 @@ namespace TestAspDotNet.WebUI.Controllers
         [HttpPost]
         public IActionResult Login(IFormCollection Data)
         {
-            string email = Data["EmailAddress"];
-            string password = Data["Password"];
+            string? email = Data["EmailAddress"];
+            string? password = Data["Password"];
             var dbUser = _account.GetUserForLogin(email, password);
             if (dbUser!=null)
             {
@@ -46,12 +46,13 @@ namespace TestAspDotNet.WebUI.Controllers
         [HttpPost]
         public IActionResult Register(User user)
         {
-            string confirmationToken = _account.Registry(user);
+            string confirmationToken = _account.Register(user);
             if (string.IsNullOrEmpty(confirmationToken)) 
             {
                 ViewBag.Error = "Error Occured";
                 return View();
             }
+            
             else
             {
                 CookieOptions options = new CookieOptions();

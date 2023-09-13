@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using TestAspDotNet.Data;
+using TestAspDotNet.Repository;
 using TestAspDotNet.Repository.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddDbContext <TestAspDotNetDbContext> (Options =>
     Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 }, ServiceLifetime.Transient);
 builder.Services.AddTransient<TestAspDotNet.Repository.IAccount, AccountRepository>(p => new AccountRepository(builder.Services.BuildServiceProvider().GetService<TestAspDotNetDbContext>()));
+builder.Services.AddTransient<TestAspDotNet.Repository.IUser, UserRepository>(p => new UserRepository(builder.Services.BuildServiceProvider().GetService<TestAspDotNetDbContext>()));
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

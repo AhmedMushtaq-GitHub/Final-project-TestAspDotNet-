@@ -13,7 +13,7 @@ namespace TestAspDotNet.Repository
     {
   
         public User GetUserForLogin(string email, string password);
-        string Registry(User user);
+        string Register(User user);
         
     }
 }

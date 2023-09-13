@@ -5,7 +5,7 @@ using TestAspDotNet.Data;
 
 namespace TestAspDotNet.WebUI
 {
-    public class AdminAttributes : Attribute, IActionFilter
+    public class AdminAttribute : Attribute, IActionFilter
     {
        
         public void OnActionExecuting(ActionExecutingContext context)

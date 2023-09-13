@@ -17,19 +17,21 @@ namespace TestAspDotNet.Repository.Implementation
         }
         public User GetUserForLogin(string email, string password)
         {
+            //return _db.Users.Where(x => (string.IsNullOrEmpty(email) || x.Name.ToLower() == email.ToLower()) && x.Password.Equals(password)).FirstOrDefault();
             return _db.Users.Where(x => x.EmailAddress.ToLower().Equals(email.ToLower()) && x.Password.Equals(password)).FirstOrDefault();
         }
 
-        public string Registry(User user)
+        public string Register(User user)
         {
-            user.UserRoleId = 3;
+            user.UserRoleId = 1;
             user.IsConfirm = false;
             user.JoinedOn = DateTime.UtcNow.AddHours(5);
             user.AccessToken = Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks;
-
-            _db.SaveChanges();
             _db.Users.Add(user);
+            _db.SaveChanges();
+            
             return user.AccessToken + user.JoinedOn.Ticks.ToString();
+           
         }
     }
 }
