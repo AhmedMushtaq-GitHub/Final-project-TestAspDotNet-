@@ -16,7 +16,7 @@ namespace TestAspDotNet.Model
         public string? Password { get; set; }
         public DateTime JoinedOn { get; set; }
         public bool IsConfirm { get; set; }
-        public UserRole? UserRole { get; set; }  
+        public UserRole UserRole { get; set; }  
         public virtual int UserRoleId { get; set; }  
     }
 }

@@ -23,8 +23,8 @@ namespace TestAspDotNet.Repository.Implementation
 
         public string Register(User user)
         {
-            user.UserRoleId = 1;
-            user.IsConfirm = false;
+            user.UserRoleId = 1003;
+            user.IsConfirm = true;
             user.JoinedOn = DateTime.UtcNow.AddHours(5);
             user.AccessToken = Guid.NewGuid().ToString() + DateTime.UtcNow.Ticks;
             _db.Users.Add(user);

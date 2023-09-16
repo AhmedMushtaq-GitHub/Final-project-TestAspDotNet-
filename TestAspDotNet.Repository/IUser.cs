@@ -10,5 +10,9 @@ namespace TestAspDotNet.Repository
     public interface IUser
     {
         List<UserRole> GetRoles();
+        UserRole GetRole(int id);
+        void AddUpdateRole(UserRole userRole);
+        void DeleteRole();
+        void DeleteRole(int id);
     }
 }

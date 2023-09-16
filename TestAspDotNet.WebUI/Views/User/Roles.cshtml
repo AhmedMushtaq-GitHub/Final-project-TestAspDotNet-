@@ -4,6 +4,7 @@
 *@
 @{
     ViewData["Title"] = "User Roles";
+    
 }
 @*<h1>New Roles</h1>*@
 <div class="container my-5">
@@ -15,24 +16,32 @@
                         <th colspan="3"><h1 class="text-success text-center">User Roles</h1></th>
                     </tr>
                     <tr>
+                        <th colspan="3"><div class="text-center"><a class="btn btn-success display-6 align-self-center" asp-controller="User" asp-action="AddUpdateRole">Creat New</a></div></th>
+                    </tr>
+                    <tr>
 
-                        <th class="text-center">Id</th>
+                        <th class="text-center">S#</th>
                         <th class="text-center">Name</th>
                         <th class="text-center">Actions</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    
+                    @{
+                        int i = 1;
+                    foreach (var item in Model)
                     {
                         <tr>
-                            <td>@item.Id</td>
+                            <td>@Convert.ToInt32(i++)</td>
                             <td>@item.Name</td>
-                            <td><a asp-controller="" asp-action="">Update</a> | <a asp-controller="" asp-action="">Delete</a>  </td>
+                            <td><a class="btn btn-success" asp-controller="User" asp-action="AddUpdateRole" asp-route-Id="@item.Id">Edit</a> |
+                                <a class="btn btn-success" asp-controller="User" asp-action="DeleteRole" asp-route-Id="@item.Id">Delete</a>
+                            </td>
 
                         </tr>
 
-                    }
+                    }}
                 </tbody>
 
             </table>
