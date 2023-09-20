@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TestAspDotNet.Model.User>;
+
+@{
+    ViewData["Title"] = "Users";
+
+}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-12  border border-success border-5">
+            <table class="table table-bordered mt-3 w-auto">
+                <thead>
+                    <tr>
+                        <th colspan="8"><h1 class="text-success display-1 text-center">Users</h1></th>
+                    </tr>
+                    <tr>
+                        <th colspan="8"><div class="text-center"><a class="btn btn-success link-light display-6 text-decoration-none align-self-center" asp-action="AddUpdateUser">Create New</a></div></th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" scope="col">Sr#</th>
+                        <th class="text-center" scope="col">Name</th>
+                        <th class="text-center" scope="col">Email</th>
+                        <th class="text-center" scope="col">Phone Number</th>
+                        <th class="text-center" scope="col">Is Confimed</th>
+                        <th class="text-center" scope="col">Joined On</th>
+                        <th class="text-center" scope="col">Role</th>
+                        <th class="text-center" scope="col" width="20%">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int i = 0;
+                        foreach (var item in Model)
+                        {
+                            <tr scope="row">
+                                <td class="text-center" scope="col">@Convert.ToInt32(++i)</td>
+                                <td class="text-center" scope="col">@item.Name</td>
+                                <td class="text-center" scope="col">@item.EmailAddress</td>
+                                <td class="text-center" scope="col">@item.PhoneNumber</td>
+                                <td class="text-center" scope="col">@item.IsConfirm</td>
+                                <td class="text-center" scope="col">@item.JoinedOn</td>
+                                <td class="text-center" scope="col">@item.UserRole.Name</td>
+                                <td class="text-center w-25" width="20%" scope="col">
+                                    <a class="btn-sm btn-success text-decoration-none" asp-controller="User" asp-action="AddUpdateUser" asp-route-Id="@item.Id">Edit</a> |
+                                    <a class="btn-sm btn-success text-decoration-none" asp-controller="User" asp-action="DeleteUser" asp-route-Id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

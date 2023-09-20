@@ -1,0 +1,62 @@
+﻿@model TestAspDotNet.Model.User;
+
+@{
+    ViewData["Title"] = "UserRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-4 mx-auto border border-success border-5">
+            <h3 class="text-success text-center">Update User </h3>
+            <form asp-action="AddUpdateUser">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Password" />
+                <input type="hidden" asp-for="AccessToken" />
+                <input type="hidden" asp-for="JoinedOn" />
+                <div class="">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="">
+                    <label asp-for="EmailAddress" class="form-label"></label>
+                    <input asp-for="EmailAddress" type="text" class="form-control" />
+                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="">
+                    <label asp-for="PhoneNumber" class="form-label"></label>
+                    <input asp-for="PhoneNumber" type="text" class="form-control" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-check form-switch my-1">
+                  @if (Model.IsConfirm)
+                    {
+                        <input asp-for="IsConfirm" type="checkbox" class="form-check-input" />
+                        <label asp-for="IsConfirm" class="form-check-lable  text-success"> </label>
+                    }
+                    else
+                    {
+
+                        <input asp-for="IsConfirm" type="checkbox" class="form-check-input" />
+                        <label asp-for="IsConfirm" class="form-check-lable  text-danger"> </label>
+                    }
+                </div>
+                <div class="">
+                    <label asp-for="UserRoleId" class="form-label"></label>
+                   <select asp-for="UserRoleId" asp-items="@ViewBag.AllRoles" class="form-control"></select>
+                    <span asp-validation-for="UserRoleId" class="text-danger"></span>
+                </div>
+                <div class="d-grid col-lg-6 mx-auto my-3">
+                    <button type="submit" class="btn btn-success">Create or Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

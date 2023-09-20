@@ -14,5 +14,11 @@ namespace TestAspDotNet.Repository
         void AddUpdateRole(UserRole userRole);
         void DeleteRole();
         void DeleteRole(int id);
+        //--------Users
+        List<User> GetUsers();
+        User GetUser(int id);
+        void AddUpdateUser(User user);
+        void DeleteUser(int id);
+        List<UserRole> GetRolesList();
     }
 }

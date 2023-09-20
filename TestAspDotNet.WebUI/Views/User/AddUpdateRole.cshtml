@@ -1,7 +1,5 @@
 ﻿@model TestAspDotNet.Model.UserRole;
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+
 @{
     ViewData["Title"] = "UserRole";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,21 +7,20 @@
 
 <div class="container my-5">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-lg-4 mx-auto border border-success border-5">
             <h3 class="text-success text-center">AddUpdate Role</h3>
-            <form asp-controller="User" asp-action="AddUpdateRole" method="post">
+            <form asp-action="AddUpdateRole">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                <lable asp-for="Name">Name</lable>
-                <input asp-for="Name" class="form-control" placeholder="Enter Name" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-
-                <button type="submit"  class="btn btn-primary">Create Or Update</button>
-
+                <div class="">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" type="text" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="d-grid col-lg-6 mx-auto my-3">
+                    <button type="submit" class="btn btn-success">Create or Update</button>
+                </div>
             </form>
         </div>
-        <div class="col-md-4"></div>
     </div>
 </div>
 
