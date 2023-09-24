@@ -14,6 +14,7 @@ builder.Services.AddDbContext <TestAspDotNetDbContext> (Options =>
 }, ServiceLifetime.Transient);
 builder.Services.AddTransient<TestAspDotNet.Repository.IAccount, AccountRepository>(p => new AccountRepository(builder.Services.BuildServiceProvider().GetService<TestAspDotNetDbContext>()));
 builder.Services.AddTransient<TestAspDotNet.Repository.IUser, UserRepository>(p => new UserRepository(builder.Services.BuildServiceProvider().GetService<TestAspDotNetDbContext>()));
+builder.Services.AddTransient<TestAspDotNet.Repository.IPost, PostRepository>(p => new PostRepository(builder.Services.BuildServiceProvider().GetService<TestAspDotNetDbContext>()));
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

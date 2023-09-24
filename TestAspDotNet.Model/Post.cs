@@ -17,6 +17,7 @@ namespace TestAspDotNet.Model
         public DateTime PostedOn { get; set; }
         public Category? Category { get; set; }
         public virtual int CategoryId { get; set; }
+       
         public User? User { get; set; }
         public virtual int UserId { get; set; }
         public PostStatus? PostStatus { get; set; }
