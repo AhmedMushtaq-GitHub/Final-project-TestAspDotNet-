@@ -1,69 +1,64 @@
-﻿@model IEnumerable<TestAspDotNet.Model.Post>
+﻿@model TestAspDotNet.Model.Post
 @{
     ViewData["Title"] = "Details Post";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container my-5">
+<div class="container">
+
     <div class="row">
-        <div class="col-lg-8 offset-lg-2">
-            <table class="table table-sm  table-bordered mt-3 align-middle">
-                <thead>
+        <div class="col-md-12">
+            <table class="table table-bordered border-success text-center">
+               
 
                     <tr>
-                        <th colspan="5" class="display-1 text-success test-center"> Posts</th>
+                        <th colspan="9">
+                            <h3 class="text-center">Posts</h3>
+                        </th>
                     </tr>
-                    <tr>
-                        <th colspan="5" class=" test-center"> <a class="btn btn-success  link-light display-6 text-decoration-none alighn-self-center" asp-action="AddUpdatePost">CreatPost</a>></th>
 
+                    <tr>
+                        <th colspan="9">
+                            <a class="btn btn-success " asp-controller="Post" asp-action="CreatePost">Creat Post</a>
+                        </th>
                     </tr>
                     <tr>
                       
-                        <th class="fs-6 text-center">Title</th>
-                        <th class="fs-6 text-center">Short Description</th>
-                        <th class="fs-6 text-center">Description</th>
-                        <th class="fs-6 text-center">Image</th>
-                        <th class="fs-6 text-center">Posted On</th>
-                        <th class="fs-6 text-center">Category</th>
-                        <th class="fs-6 text-center">Author Name</th>
-                        <th class="fs-6 text-center">Post Status</th>
-                        <th class="fs-6 text-center">Actions</th>
+                        <th>Title</th>
+                        <th>Short Description</th>
+                        <th>Description</th>
+                        <th>Image</th>
+                        <th>Posted On</th>
+                        <th>Category</th>
+                        <th>Author Name</th>
+                        <th>Post Status</th>
+                        <th>Actions</th>
                     </tr>
 
-                </thead>
-                <tbody>
-                    @{
-                        int i = 0;
-                        foreach (var item in Model)
-                        {
+                   
                             <tr>
                               
-                                <td class="fs-6 text-center">@item.Title</td>
-                                <td class="fs-6 text-center">@item.ShortDescription</td>
-                                <td class="fs-6 text-center">@item.Description</td>
-                                <td class="fs-6 text-center">@item.Image</td>
-                                <td class="fs-6 text-center">@item.PostedOn</td>
-                                <td class="fs-6 text-center">@item.Category</td>
-                                <td class="fs-6 text-center">@item.Category.Name</td>
-                                <td class="fs-6 text-center">@item.User.Name</td>
-                                <td class="fs-6 text-center">@item.PostStatus.Name</td>
+                                <td>@Model.Title</td>
+                                <td>@Model.ShortDescription</td>
+                                <td>@Model.Description</td>
+                                <td>@Model.Image</td>
+                                <td>@Model.PostedOn</td>
+                                
+                                <td>@Model.Category.Name</td>
+                                <td>@Model.User.Name</td>
+                                <td>@Model.PostStatus.Name</td>
                                
-                                <td class="fs-6 text-center w-25">
-                                    <a class="btn-sm btn-success text-decoration-none" asp-controller="Post" asp-action="AddUpdatePost" asp-route-Id="@item.Id">Edit</a> 
+                                <td class=" text-center w-25">
+                            <a class="btn-sm btn-success text-decoration-none" asp-controller="Post" asp-action="UpdatePost" asp-route-Id="@Model.Id">Edit this Post</a>
 
-                                </td>
+                                 </td>
 
 
                             </tr>
-                        }
-                    }
-
-                </tbody>
+               
 
 
             </table>
-
         </div>
-
     </div>
 </div>

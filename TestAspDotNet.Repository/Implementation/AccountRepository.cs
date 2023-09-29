@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace TestAspDotNet.Repository.Implementation
         {
             //return _db.Users.Where(x => (string.IsNullOrEmpty(email) || x.Name.ToLower() == email.ToLower()) && x.Password.Equals(password)).FirstOrDefault();
             return _db.Users.Where(x => x.EmailAddress.ToLower().Equals(email.ToLower()) && x.Password.Equals(password)).FirstOrDefault();
+        }
+
+        public User GetUserInfo(string accessToken)
+        {
+            return _db.Users.Where(x => x.AccessToken.Equals(accessToken)).FirstOrDefault();
         }
 
         public string Register(User user)

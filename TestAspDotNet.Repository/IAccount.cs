@@ -11,9 +11,10 @@ namespace TestAspDotNet.Repository
 {
     public interface IAccount
     {
-  
-        public User GetUserForLogin(string email, string password);
         string Register(User user);
+        public User GetUserForLogin(string email, string password);
+        User GetUserInfo(string accessToken);
+      
         
     }
 }

@@ -1,0 +1,48 @@
+﻿@model TestAspDotNet.Model.Post;
+
+@{
+    ViewData["Title"] = "Posts";
+}
+
+<div class="Container">
+    <div class="row">
+        <div class="col-lg-4 mx-auto border border-success border-5">
+            <h3 class="text-success text-center">Update Post</h3>
+
+            <div class="col-md-12">
+                <form asp-controller="Post" asp-action="UpdatePost" method="post">
+                    <div class="">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" type="text" class="form-control" />
+                    </div>
+                    <div class="">
+                        <label asp-for="ShortDescription" class="form-label"></label>
+                        <input asp-for="ShortDescription" type="text" class="form-control" />
+                    </div>
+                    <div class="">
+                        <label asp-for="Description" class="form-label"></label>
+                        <input asp-for="Description" type="text" class="form-control" />
+                    </div>
+                    <div class="">
+                        <label asp-for="Image" class="form-label"></label>
+                        <input asp-for="Image" type="text" class="form-control" />
+                    </div>
+                    <div class="">
+                        <label asp-for="PostStatusId" class="form-label"></label>
+                        <select asp-for="PostStatusId" asp-items="@ViewBag.PostStatus" class="form-control"></select>
+                    </div>
+                    <div class="">
+                        <label asp-for="CategoryId" class="form-label"></label>
+                        <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-control"></select>
+                    </div>                    
+                    <div class="">
+                        <input asp-for="UserId" type="hidden" class="form-control" />
+                    </div>
+                    <div class="d-grid col-lg-6 mx-auto my-3">
+                        <button type="submit" class="btn btn-success">Update Post</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

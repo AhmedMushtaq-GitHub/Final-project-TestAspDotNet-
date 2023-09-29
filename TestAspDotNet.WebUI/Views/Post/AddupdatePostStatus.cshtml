@@ -1,0 +1,23 @@
+﻿@model TestAspDotNet.Model.PostStatus;
+@{
+    ViewData["Title"] = "PostStatuses";
+
+}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-4 mx-auto  border border-success border-5">
+            <h3 class="text-success text-center">AddUpdate PostStatus</h3>
+            <form asp-action="AddUpdatePostStatus">
+
+                <div>
+                    <label asp-for="Name" class="form-lable"></label>
+
+                    <input asp-for="Name" type="text" class="form-control" />
+
+                </div>
+                <button type="submit" class="btn btn-success">Create</button>
+            </form>
+        </div>
+    </div>
+</div>
