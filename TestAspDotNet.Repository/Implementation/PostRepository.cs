@@ -16,9 +16,29 @@ namespace TestAspDotNet.Repository.Implementation
         {
             _db = db;
         }
+        //-----------Post Crud
         public List<Post> GetPosts
         {
             get { return _db.Posts.Include(x => x.Category).Include(x => x.PostStatus).ToList(); }
+        }
+       
+        public void CreatePost(Post post)
+        {
+            post.PostedOn = DateTime.UtcNow.AddHours(5);
+            _db.Posts.Add(post);
+            _db.SaveChanges();
+        }
+
+        public void UpdatePost(Post post)
+        {
+            _db.Posts.Update(post);
+            _db.SaveChanges();
+        }
+        public void DeletePost(int id)
+        {
+            Post post = _db.Posts.Where(x => x.Id == id).FirstOrDefault();
+            _db.Posts.Remove(post);
+            _db.SaveChanges();
         }
         //----------Category
         public List<Category> GetCategories ()
@@ -72,23 +92,51 @@ namespace TestAspDotNet.Repository.Implementation
             _db.Remove(postStatus);
             _db.SaveChanges();
         }
-        //-----------Post Crud
-        public void CreatePost(Post post)
-        {
-            post.PostedOn = DateTime.UtcNow.AddHours(5);
-            _db.Posts.Add(post);
-            _db.SaveChanges();
-        }
+       
+        //------Reaction type
 
-        public void UpdatePost(Post post)
+        public List<ReactionType> GetReactionTypes() 
         {
-            _db.Posts.Update(post);
+            return _db.ReactionTypes.ToList();
+        }
+        public ReactionType GetReactionType(int id) 
+        {
+            return _db.ReactionTypes.Where(x => x.Id == id).FirstOrDefault();
+        }
+        public void AddUpdateReactionType(ReactionType reactionType)
+        {
+            _db.ReactionTypes.Update(reactionType);
             _db.SaveChanges();
         }
-            public void DeletePost(int id)
+        public void DeleteReactionType(int id)
         {
-            Post post = _db.Posts.Where(x => x.Id == id).FirstOrDefault();
-            _db.Posts.Remove(post);
+            ReactionType reactionType = _db.ReactionTypes.Where(x => x.Id == id).FirstOrDefault();
+            _db.ReactionTypes.Remove(reactionType);
+            _db.SaveChanges();
+        }
+        //------------Method for post reaction
+        public List<PostReaction> GetPostReactions()
+        {
+            return _db.PostReactions.Include(x => x.User).Include(x => x.Post).Include(x => x.ReactionType).ToList();
+        }
+        public PostReaction GetPostReaction(int id)
+        {
+            return _db.PostReactions.Where(x => x.Id == id).Include(x => x.User).Include(x => x.Post).Include(x => x.ReactionType).FirstOrDefault();
+        }
+        public void CreatePostReaction(PostReaction postReaction)
+        {
+            _db.PostReactions.Add(postReaction);
+            _db.SaveChanges();
+        }
+        public void UpdatePostReaction(PostReaction postReaction)
+        {
+            _db.PostReactions.Update(postReaction);
+            _db.SaveChanges();
+        }
+        public void DeletePostReaction(int id)
+        {
+            PostReaction postReaction = _db.PostReactions.Where(x => x.Id == id).FirstOrDefault();
+            _db.PostReactions.Remove(postReaction);
             _db.SaveChanges();
         }
     }

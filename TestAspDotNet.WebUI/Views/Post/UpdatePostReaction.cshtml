@@ -1,0 +1,32 @@
+﻿@model TestAspDotNet.Model.PostReaction
+
+@{
+    ViewData["Title"] = "UpdatePostReaction";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 border border-success">
+            <br />
+            <h4 class="text-success text-center">Update PostReaction</h4>
+            <form asp-controller="Post" asp-action="UpdatePostReaction" method="post">
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <label asp-for="PostId">Post Id</label>
+                <select asp-for="PostId" asp-items="@ViewBag.posts" class="form-select"></select>
+                <span asp-validation-for="PostId" class="text-danger"></span>
+                <br />
+                <label asp-for="ReactionTypeId">Post ReactionId</label>
+                <select asp-for="ReactionTypeId" asp-items="@ViewBag.Reactions" class="form-select"></select>
+                <span asp-validation-for="ReactionTypeId" class="text-danger"></span>
+                <br />
+                <input asp-for="UserId" type="hidden" class="form-control" />
+                <button type="submit" class="btn btn-success">Create Reactionpost</button>
+                <br />
+            </form>
+            <br />
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>

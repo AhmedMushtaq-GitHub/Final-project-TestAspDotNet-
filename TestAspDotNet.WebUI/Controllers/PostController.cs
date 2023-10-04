@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.Hosting;
 using TestAspDotNet.Model;
 using TestAspDotNet.Repository;
 
@@ -127,7 +128,89 @@ namespace TestAspDotNet.WebUI.Controllers
             return RedirectToAction("GetPosts");
 
         }
+        //-------------Reaction Type
+       
+        [HttpGet]
+        public IActionResult Reactiontypes()
+        {
+            return View(_post.GetReactionTypes());
+        }
+      
+        [HttpGet]
+        public IActionResult AddUpdateReactiontypes(int id = 0)
+        {
+            return View(_post.GetReactionType(id));
+        }
+        
+        [HttpPost]
+        public IActionResult AddUpdateReactiontypes(ReactionType reactionType)
+        {
+           _post.AddUpdateReactionType(reactionType);
+            return RedirectToAction("Reactiontypes");
+        }
+      
+        [HttpGet]
+        public IActionResult DeleteReactiontypes(int id)
+        {
+           _post.DeleteReactionType(id);
+            return RedirectToAction("Reactiontypes");
+        }
+        //----------post reaction
+        [HttpGet]
+        public IActionResult PostReactions()
+        {
+          return View(_post.GetPostReactions());
+        }
+
+    
+
+        [HttpGet]
+        public IActionResult GetPostReaction(int id = 0)
+        {
+            return View(_post.GetPostReaction(id));
+        }
+        [HttpPost]
+        public IActionResult CreatePostReaction()
+        {
+            ViewBag.Posts = new SelectList(_post.GetPosts.ToList(), "Id", "Title");
+            ViewBag.Reactions = new SelectList(_post.GetReactionTypes().ToList(), "Id", "Name");
+            return View(new PostReaction());
+        }
+
+        [HttpPost]
+        public IActionResult CreatePostReaction(PostReaction postReaction)
+        {
+            User user = new CommonController(_account).GetUser(HttpContext);
+            postReaction.UserId = user.Id;
+
+            _post.CreatePostReaction(postReaction);
+            return RedirectToAction("PostReactions");
+        }
+
+        [HttpGet]
+        public IActionResult UpdatePostReaction(int id = 0)
+        {
+          ViewBag.Posts = new SelectList(_post.GetPostStatuses().ToList(), "Id", "Title");
+            ViewBag.Reactions = new SelectList(_post.GetCategories().ToList(), "Id", "Name");
+            return View (_post.GetPostReaction(id));
 
 
+        }
+
+        [HttpGet]
+        public IActionResult UpdatePostReaction(PostReaction postReaction)
+        {
+           _post.UpdatePostReaction(postReaction);
+            return RedirectToAction("PostReactions");
+        }
+
+       
+
+        [HttpGet]
+        public IActionResult DeletePostReaction(int id)
+        {
+            _post.DeletePostReaction(id);
+            return RedirectToAction("PostReactions");
+        }
     }
 }

@@ -13,7 +13,6 @@ namespace TestAspDotNet.Model
         public virtual int ReactionTypeId { get; set; }
         public User? User { get; set; }
         public virtual int UserId { get; set; }
-
         public Post? Post { get; set; }
         public virtual int PostId { get; set; }
     }

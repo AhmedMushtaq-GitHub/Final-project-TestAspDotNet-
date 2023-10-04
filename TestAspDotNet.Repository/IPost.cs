@@ -29,8 +29,17 @@ namespace TestAspDotNet.Repository
         void AddUpdatePostStatus(PostStatus postStatus);
         void DeletePostStatus(int id);
 
-
-        
+        //-------------Method for reaction types
+        List<ReactionType> GetReactionTypes();
+        ReactionType GetReactionType(int id);
+        void AddUpdateReactionType(ReactionType reactionType);
+        void DeleteReactionType(int id);
+        //------------Method for post reaction
+        PostReaction GetPostReaction(int id);
+        List<PostReaction> GetPostReactions();
+        void CreatePostReaction(PostReaction postReaction);
+        void UpdatePostReaction(PostReaction postReaction);
+        void DeletePostReaction(int id);
 
     }
 }

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<TestAspDotNet.Model.ReactionType>
+@{
+    ViewData["Title"] = "ReactionTypes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered border-success text-center">
+                <tr>
+                    <th colspan="5">
+                        <h3 class="text-center">Post Reactions</h3>
+                    </th>   
+                </tr>
+
+                <tr>
+                    <th colspan="5">
+                        <a class="btn btn-success " asp-controller="Post" asp-action="AddUpdateReactiontypes">Add New</a>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>Sr#</th>
+                    <th>Name</th>
+                  
+                    <th>Actions</th>
+                </tr>
+                @{
+                    int i = 0;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fs-6 text-center">@Convert.ToInt32(++ i)</td>
+                            <td class="fs-6 text-center">@item.Name</td>
+                         
+                            <td class="fs-6 text-center w-25">
+                                <a class="btn-sm btn-success text-decoration-none" asp-controller="Post" asp-action="AddUpdateReactiontypes" asp-route-Id="@item.Id">Edit</a> |
+
+                                <a class="btn-sm btn-success text-decoration-none" asp-controller="Post" asp-action="DeleteReactiontypes" asp-route-Id="@item.Id">Delete</a>
+                            </td>
+
+
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+    </div>
+</div>
