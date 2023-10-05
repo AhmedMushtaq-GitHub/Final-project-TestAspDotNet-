@@ -40,6 +40,11 @@ namespace TestAspDotNet.Repository.Implementation
             _db.Posts.Remove(post);
             _db.SaveChanges();
         }
+
+        public Post GetPost(int id)
+        {
+            return _db.Posts.Where(x => x.Id.Equals(id)).Include(x => x.Category).Include(x => x.PostStatus).Include(x => x.User).FirstOrDefault();
+        }
         //----------Category
         public List<Category> GetCategories ()
         {
@@ -63,12 +68,6 @@ namespace TestAspDotNet.Repository.Implementation
             _db.SaveChanges();
         }
 
-        
-
-        public Post GetPost(int id)
-        {
-            return _db.Posts.Where(x => x.Id.Equals(id)).Include(x => x.Category).Include(x => x.PostStatus).Include(x => x.User).FirstOrDefault();
-        }
         //-----------PostStatus
         public List<PostStatus> GetPostStatuses()
         {

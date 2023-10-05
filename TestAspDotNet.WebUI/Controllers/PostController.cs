@@ -169,7 +169,7 @@ namespace TestAspDotNet.WebUI.Controllers
         {
             return View(_post.GetPostReaction(id));
         }
-        [HttpPost]
+        [HttpGet]
         public IActionResult CreatePostReaction()
         {
             ViewBag.Posts = new SelectList(_post.GetPosts.ToList(), "Id", "Title");
@@ -197,7 +197,7 @@ namespace TestAspDotNet.WebUI.Controllers
 
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult UpdatePostReaction(PostReaction postReaction)
         {
            _post.UpdatePostReaction(postReaction);
