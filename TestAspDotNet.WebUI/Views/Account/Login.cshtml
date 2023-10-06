@@ -6,11 +6,16 @@
     ViewData["Title"] = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1>Login</h1>
+<br />
+<br />
+<br />
+<br />
+
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
+            <h1>Login</h1>
             <form asp-action="Login" method="post">
                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                
@@ -20,7 +25,7 @@
               
                
                     <lable asp-for="Password" >Password</lable>
-                    <input type="password" asp-for="Password"  class="form-control" placeholder="Enter Password" />
+                    <input type="text" asp-for="Password"  class="form-control" placeholder="Enter Password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 
                 @if(string.IsNullOrEmpty(ViewBag.Error))
