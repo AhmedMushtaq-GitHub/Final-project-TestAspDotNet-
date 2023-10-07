@@ -16,3 +16,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#Hero {
+    background: url(/istockphoto-1206796363-612x612.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-position: top;
+    margin-top: -300px;
+    height: 800px;
+}
+
+.herotext {
+    margin-top:30%;
+    font-size: 100px;
+    font-weight: 700;
+}
