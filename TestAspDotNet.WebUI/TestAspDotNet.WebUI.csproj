@@ -12,12 +12,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\TestAspDotNet.Data\TestAspDotNet.Data.csproj" />
     <ProjectReference Include="..\TestAspDotNet.Model\TestAspDotNet.Model.csproj" />
     <ProjectReference Include="..\TestAspDotNet.Repository\TestAspDotNet.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\posts\" />
   </ItemGroup>
 
 </Project>

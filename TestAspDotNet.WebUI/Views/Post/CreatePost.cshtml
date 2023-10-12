@@ -13,7 +13,7 @@
             <h3 class="text-success text-center">Create New Post</h3>
 
             <div class="col-md-12">
-                <form asp-asp-controller="Post" asp-action="CreatePost">
+                <form asp-asp-controller="Post" asp-action="CreatePost" enctype="multipart/form-data">
                     <div class="">
                         <label asp-for="Title" class="form-label"></label>
                         <input asp-for="Title" type="text" class="form-control" />
@@ -28,7 +28,8 @@
                     </div>
                     <div class="">
                         <label asp-for="Image" class="form-label"></label>
-                        <input asp-for="Image" type="text" class="form-control" />
+                        <input asp-for="Image" name="PostImage" class="form-control" type="file" placeholder="Upload Image" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
                     </div>
                     <div class="">
                         <label asp-for="PostStatusId" class="form-label"></label>
